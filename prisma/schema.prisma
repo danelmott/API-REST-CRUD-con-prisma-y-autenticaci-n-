@@ -1,0 +1,25 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+enum Rol{
+  USER
+  ADMIN
+}
+
+//modelo basico para los usuarios
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  rol       Rol      @default(USER)
+  
+  @@map("users")
+}
