@@ -1,5 +1,7 @@
 import { Router } from "express";
 import loginController from "../controllers/auth/loginController.js";
+import signUpController from "../controllers/auth/signUpController.js";
+import meController from "../controllers/auth/meController.js";
 import passport from "passport";
 
 const router = Router();
@@ -11,5 +13,12 @@ router.route("/login")
     loginController
 );
 
+router.route("/signup")
+.post(signUpController);
+
+router.route("/me")
+.get(passport.authenticate("jwt",{session:false}),
+    meController
+)
 
 export default router;

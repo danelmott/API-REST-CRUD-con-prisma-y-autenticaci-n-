@@ -16,6 +16,7 @@ export async function createUserService(data){
             },
             select:{
                 id: true,
+                name: true,
                 email: true,
                 rol: true
             }
@@ -29,7 +30,7 @@ export async function createUserService(data){
         const isDuplicate = error.code === "P2002" || error.code === "23505";
         
         isDuplicate
-        ? error.message = 'El email ya existe en la base de datos'
+        ? error.message = 'el email o el name del usuario ya estan en la base de datos'
         : error.message = 'Error al intentar crear el usuario'
         
         throw error

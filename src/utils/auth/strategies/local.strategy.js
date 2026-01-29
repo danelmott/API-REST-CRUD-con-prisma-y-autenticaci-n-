@@ -4,12 +4,12 @@ import bcrypt from 'bcrypt';
 
 //estrategia de autenticacion local para ver si el usuario existe cuando se loguea
 export const localStrategy = new Strategy({
-    usernameField: 'email',
+    usernameField: 'identifier',
     passwordField: 'password'
 },
-    async (email, password, done) => {
+    async (identifier, password, done) => {
         try {
-            const user = await searchUserService(email);
+            const user = await searchUserService(identifier);
             
             if(!user){
                 return done (null, false, {message: "Usuario no encontrado"})

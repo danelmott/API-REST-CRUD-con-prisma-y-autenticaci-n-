@@ -16,10 +16,12 @@ enum Rol{
 //modelo basico para los usuarios
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  password  String
-  rol       Rol      @default(USER)
+  id         String   @id @default(cuid())
+  name       String   @unique
+  email      String   @unique
+  password   String
+  rol        Rol      @default(USER)
+  createdAt  DateTime @default(now())
   
   @@map("users")
 }

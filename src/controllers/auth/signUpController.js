@@ -3,7 +3,7 @@ import { createUserSchema } from '../../utils/validators/createUserSchema.js';
 
 
 //controller para crear usuarios
-export default async function createUserController(req, res){
+export default async function signUpController(req, res){
     try {
         // Validar el body con Zod
         const parseData = createUserSchema.safeParse(req.body);
